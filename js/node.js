@@ -13,6 +13,7 @@ function Node(i,j,cols,rows) {
   }
 
   this.show = function(color) {
+    noStroke();
     fill(color);
     if(this.wall) {
       fill(0);
@@ -26,5 +27,10 @@ function Node(i,j,cols,rows) {
     if(i > 0) {this.neighbors.push(grid[i-1][j]);}
     if(j < rows-1) {this.neighbors.push(grid[i][j+1]);}
     if(j > 0) {this.neighbors.push(grid[i][j-1]);}
+    // diagnols
+    if(i > 0 && j > 0) {this.neighbors.push(grid[i-1][j-1]);}
+    if(i > 0 && j < rows-1) {this.neighbors.push(grid[i-1][j+1]);}
+    if(i < cols-1 && j > 0) {this.neighbors.push(grid[i+1][j-1]);}
+    if(i < cols-1 && j < rows-1) {this.neighbors.push(grid[i+1][j+1]);}
   }
 }

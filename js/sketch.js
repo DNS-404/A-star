@@ -1,5 +1,5 @@
-let cols = 25;
-let rows = 25;
+let cols = 50;
+let rows = 50;
 let grid = new Array(cols);
 
 let openSet = []; // nodes not visited yet
@@ -28,7 +28,7 @@ function setup() {
   start = grid[0][0];
   end = grid[cols-1][rows-1];
   start.wall = false;
-  start.end = false;
+  end.wall = false;
   openSet.push(start); // starting with open set
 }
 
@@ -73,6 +73,9 @@ function draw() {
 
   } else {
     // no solution
+    console.log('no solution');
+    noLoop();
+    return;
   }
 
   background(0);
@@ -116,5 +119,6 @@ function removeFromArray(arr, elt){
 }
 
 function heuristic(a, b){
-  return abs(a.i-b.i) + abs(a.j-b.j);
+  return dist(a.i,a.j,b.i,b.j);
+  // return abs(a.i-b.i) + abs(a.j-b.j);
 }
