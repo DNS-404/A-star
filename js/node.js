@@ -8,18 +8,17 @@ function Node(i,j,cols,rows) {
   this.previous = undefined;
   this.wall = false;
 
-  if(random(1) < 0.3){
+  if(random(1) < 0.4){
     this.wall = true;
   }
 
   this.show = function(color) {
-    // noStroke();
-    fill(color);
+    noStroke();
+    let w = width/cols, h = height/rows;
     if(this.wall) {
       fill(0);
+      rect(i*w, j*h, w, h, w/5);
     }
-    let w = width/cols, h = height/rows;
-    rect(i*w, j*h, w, h);
   }
 
   this.addNeighbors = function(grid) {

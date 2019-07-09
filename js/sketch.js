@@ -8,7 +8,7 @@ let start, end;
 let path = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 500);
   print("A*");
   // 2d Array
   for(let i=0; i<cols; i++){
@@ -83,7 +83,7 @@ function draw() {
     return;
   }
 
-  background(0);
+  background(255);
 
   for(let i=0; i<cols; i++){
     for(let j=0; j<rows; j++){
@@ -91,13 +91,13 @@ function draw() {
     }
   }
 
-  for(let i=0; i<closedSet.length; i++){
-    closedSet[i].show(color(255,0,0));
-  }
-
-  for(let i=0; i<openSet.length; i++){
-    openSet[i].show(color(0,255,0));
-  }
+  // for(let i=0; i<closedSet.length; i++){
+  //   closedSet[i].show(color(255,0,0));
+  // }
+  //
+  // for(let i=0; i<openSet.length; i++){
+  //   openSet[i].show(color(0,255,0));
+  // }
 
   // Find the path
   path = [];
@@ -108,9 +108,18 @@ function draw() {
     temp = temp.previous;
   }
 
+  // for(let i=0; i<path.length; i++){
+  //   path[i].show(color(0,0,255));
+  // }
+
+  noFill();
+  stroke(137, 28, 247);
+  strokeWeight(width/(4*cols));
+  beginShape();
   for(let i=0; i<path.length; i++){
-    path[i].show(color(0,0,255));
+    vertex(path[i].i*(width/cols) + (width/(2*cols)), path[i].j*(height/rows) + (height/(2*rows)));
   }
+  endShape();
 
 }
 
