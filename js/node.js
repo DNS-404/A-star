@@ -6,9 +6,17 @@ function Node(i,j,cols,rows) {
   this.h = 0;
   this.neighbors = [];
   this.previous = undefined;
+  this.wall = false;
+
+  if(random(1) < 0.3){
+    this.wall = true;
+  }
 
   this.show = function(color) {
     fill(color);
+    if(this.wall) {
+      fill(0);
+    }
     let w = width/cols, h = height/rows;
     rect(i*w, j*h, w, h);
   }
