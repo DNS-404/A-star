@@ -114,7 +114,7 @@ function draw() {
 
   noFill();
   stroke(137, 28, 247);
-  strokeWeight(width/(4*cols));
+  strokeWeight(width/(3*cols));
   beginShape();
   for(let i=0; i<path.length; i++){
     vertex(path[i].i*(width/cols) + (width/(2*cols)), path[i].j*(height/rows) + (height/(2*rows)));

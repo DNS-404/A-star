@@ -16,7 +16,7 @@ function Node(i,j,cols,rows) {
     noStroke();
     let w = width/cols, h = height/rows;
     if(this.wall) {
-      fill(0);
+      fill(40);
       rect(i*w, j*h, w, h, w/5);
     }
   }
