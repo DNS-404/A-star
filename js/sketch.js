@@ -36,9 +36,9 @@ function setup() {
 function draw() {
 
   if(openSet.length > 0){
-    // getting element with lowest f value
+    // getting element with lowest f value in the worst way possible :P
     let lowestNodeIndex = 0;
-    for(let i=0; i<openSet.length; i++) {
+    for(let i=0; i<openSet.length; i++) { // heap should be used. not linear search :P
       if(openSet[i].f < openSet[lowestNodeIndex].f){
         lowestNodeIndex = i;
       }
@@ -57,17 +57,22 @@ function draw() {
     for(neighbor of neighbors){
       if(!closedSet.includes(neighbor) && !neighbor.wall){
         let tempGScore = current.g + 1;
+        let newPath = false;
         if(openSet.includes(neighbor)){
           if(tempGScore < neighbor.g){
             neighbor.g = tempGScore;
+            newPath = true;
           }
         } else {
           neighbor.g = tempGScore;
+          newPath = true;
           openSet.push(neighbor);
         }
-        neighbor.h = heuristic(neighbor, end);
-        neighbor.f = neighbor.g + neighbor.h;
-        neighbor.previous = current;
+        if(newPath){
+          neighbor.h = heuristic(neighbor, end);
+          neighbor.f = neighbor.g + neighbor.h;
+          neighbor.previous = current;
+        }
       }
     }
 
@@ -106,6 +111,7 @@ function draw() {
   for(let i=0; i<path.length; i++){
     path[i].show(color(0,0,255));
   }
+
 }
 
 

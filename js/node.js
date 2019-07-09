@@ -13,7 +13,7 @@ function Node(i,j,cols,rows) {
   }
 
   this.show = function(color) {
-    noStroke();
+    // noStroke();
     fill(color);
     if(this.wall) {
       fill(0);
