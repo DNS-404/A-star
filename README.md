@@ -8,6 +8,7 @@ A* achieves better performance by using heuristics to guide its search.
 
 ## A* in action!
 
+- A different puzzle is generated every time randomly and A* algorithm finds a path through it from top left to bottom right.
 <img src="media/pathfindingExample.gif" height="300">
 
 ## Author
